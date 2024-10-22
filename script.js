@@ -44,9 +44,9 @@ async function getData(location) {
     weather.appendChild(icon); // Append the icon
     weather.appendChild(temperature);
 
-     // Description or weather status
-     const status = document.getElementById("weather_status");
-     status.textContent = data.weather[0].main;
+    // Description or weather status
+    const status = document.getElementById("weather_status");
+    status.textContent = data.weather[0].main;
 
     toggleTemp.innerText = `Switch to ${
       setTemperature === "celcius" ? "Fahrenheit" : "Celcius"
@@ -64,7 +64,9 @@ async function getData(location) {
 
     // Wind speed
     const windSpeed = document.createElement("li");
-    windSpeed.textContent = `Wind: ${Math.round(data.wind.speed * 2.23694)} mph`;
+    windSpeed.textContent = `Wind: ${Math.round(
+      data.wind.speed * 2.23694
+    )} mph`;
 
     // Sea and Ground level
     const seaLevel = document.createElement("li");
@@ -83,27 +85,36 @@ async function getData(location) {
 
 // Event Listener for Searching Weather Data
 searchWeather.addEventListener("click", () => {
+  // Disable the button to prevent multiple clicks
+  searchWeather.disabled = true;
+
   welcomeGIF.classList.remove("hidden");
   toggleTemp.classList.add("hidden");
 
-  const loadingText = document.getElementById("loading_text");
-  loadingText.textContent = "Loading..."
-  
   // Clear previous content when loading
   document.getElementById("weather_main_info").innerHTML = "";
   document.getElementById("information_text").innerHTML = "";
   document.getElementById("location_name").innerHTML = "";
-  document.getElementById("weather_status").innerHTML ="";
+  document.getElementById("weather_status").innerHTML = "";
 
   setTimeout(() => {
     const userInput = document.getElementById("inputLocationName").value;
     inputString = userInput;
-    userInput ? getData(userInput) : console.log("Please enter a location");
-    document.getElementById("inputLocationName").value = "";
-    toggleTemp.classList.remove("hidden");
-    welcomeGIF.classList.add("hidden")
+    if (userInput) {
+      getData(userInput);
+      
+      const loadingText = document.getElementById("loading_text");
+      loadingText.textContent = "Loading...";
+
+      document.getElementById("inputLocationName").value = "";
+      toggleTemp.classList.remove("hidden");
+      welcomeGIF.classList.add("hidden");
+    } else {
+    }
+
+    // Enable again the search button
+    searchWeather.disabled = false;
   }, 2000);
-  
 });
 
 // Toggle button to switch temperature
