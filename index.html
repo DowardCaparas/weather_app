@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Developer: Dounhuward Caparas, A weather app that allow users to
+    fetch weather data in any country"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Developer: Dounhuward Caparas, A weather app that allow users to
-    fetch weather data in any country" />
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-</head>
+  <body>
+    <main>
+      <div class="parent">
+        <header><h1 class="header_text">WEATHER APP</h1></header>
+        <div class="main_container">
+          <!-- Search bar and search button -->
+          <div class="inputAndButton">
+            <input
+              id="inputLocationName"
+              type="text"
+              placeholder="City name, Country name"
+              required
+            />
+            <button id="searchWeather" aria-label="search weather condition">
+              Search
+            </button>
+          </div>
 
-<body>
-  <main>
-    <div class="parent">
-      <div class="main_container">
+          <!-- GIF Icon -->
+          <div id="welcome_gif">
+            <img id="rainy_sunny_gif" src="/assets/rainy_sunny_gif_icon.gif" alt="rainy sunny" />
+            <span id="loading_text">Enter location</span>
+          </div>
 
-        <!-- Search bar and search button -->
-        <div class="inputAndButton">
-          <input id="inputLocationName" type="text" placeholder="City name, Country name" />
-          <button id="searchWeather" aria-label="search weather condition">
-            <img src="/assets/svg/search.svg" alt="search icon">
-          </button>
+          <!-- Details --> 
+          <h2 id="location_name"></h2>
+          <div class="main_info">
+            <div id="weather_main_info"></div>
+            <span id="weather_status"></span>
+            <button id="toggle_temperature"></button>
+          </div>
+          <span id="information_text"></span>
+
         </div>
-
-        <!-- Details -->
-        <h1 id="location_name"></h1>
-
-       <div class="main_info">
-        <div id="weather_main_info"></div>
-        <button id="toggle_temperature"></button>
-       </div>
-        <span id="information_text"></span>
-
+        <!-- End of main container -->
       </div>
-    </div>
-  </main>
-</body>
-<script src="script.js"></script>
-
+      <footer>
+        <p>Copyright &copy; 2024 Dounhuward B. Caparas</p>
+      </footer>
+    </main>
+  </body>
+  <script src="script.js"></script>
 </html>

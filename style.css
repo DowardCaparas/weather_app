@@ -8,7 +8,7 @@
 body {
     height: 100%;
     background-color: #41A9F4;
-    color: #202124;
+    color: #fff;
 }
 
 .parent {
@@ -23,12 +23,16 @@ body {
     background-color: #fff;
     border-radius: 5px;
     height: 450px;
-    margin-top: 80px;
+    margin: 40px 0;
+    color: #202124;
+}
+
+.header_text {
+    margin-top: 28px;
 }
 
 .inputAndButton {
     display: flex;
-    gap: 1rem;
 }
 
 .hidden {
@@ -36,15 +40,16 @@ body {
 }
 
 #inputLocationName, #searchWeather {
-    padding: 10px;
-    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #9c9c9c;
 }
 
 #toggle_temperature {
     cursor: pointer;
     border-radius: 999px;
-    margin-bottom: 5px;
-    background-color: #41A9F4;
+    margin: 12px 0;
+    background-color: #32a0ee;
     color: #fff;
     font-size: 1rem;
     border: none;
@@ -53,15 +58,13 @@ body {
 
 #inputLocationName {
     width: 100%;
-    border-radius: 999px;
-    font-size: 1rem;
-    border: 2px solid #E9E9ED;
+    border-radius:  30px 0 0 30px;
+    
 }
 
 #searchWeather {
-    border-radius: 999px;
+    border-radius: 0 30px 30px 0;
     cursor: pointer;
-    width: 3.5rem;
 }
 
 #location_name {
@@ -71,7 +74,7 @@ body {
 .weather_icon {
     width: 8rem;
     height: 8rem;
-    background-color: #a3d2f3;
+    background-color: #dbe1e6;
     border-radius: 999px;
 }
 
@@ -93,6 +96,23 @@ body {
     margin-bottom: 15px;
 }
 
+#rainy_sunny_gif {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+#welcome_gif {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#weather_status{
+    font-size: 1.5rem;
+}
+
 ul {
     list-style: none; 
   }
@@ -101,3 +121,9 @@ ul {
     margin-bottom: 5px; /* Optional: Add some space between list items */
   }
   
+  footer {
+    background-color: #202124;
+    display: grid;
+    place-items: center;
+    height: 80px;
+  }

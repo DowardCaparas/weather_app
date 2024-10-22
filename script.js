@@ -1,5 +1,6 @@
 const searchWeather = document.getElementById("searchWeather");
 const toggleTemp = document.getElementById("toggle_temperature");
+const welcomeGIF = document.getElementById("welcome_gif");
 
 toggleTemp.classList.add("hidden");
 
@@ -15,9 +16,9 @@ async function getData(location) {
       throw new Error(`Response error: ${response.status}`);
     }
     const data = await response.json();
-
     // Update the DOM when the data is ready
 
+    // location name
     const locationName = document.getElementById("location_name");
     locationName.textContent = `${data.name} ${data.sys.country}`; // City name or country
 
@@ -34,7 +35,7 @@ async function getData(location) {
     // Temperature in Celsius or Fahrenheit
     const temperature = document.createElement("span");
     temperature.classList.add("temperature_text");
-    temperature.textContent = `${Math.round(getTemperature(data.main.temp))} °${
+    temperature.textContent = `${Math.round(getTemperature(data.main.temp))}°${
       setTemperature === "celcius" ? "C" : "F"
     }`;
 
@@ -43,10 +44,15 @@ async function getData(location) {
     weather.appendChild(icon); // Append the icon
     weather.appendChild(temperature);
 
+     // Description or weather status
+     const status = document.getElementById("weather_status");
+     status.textContent = data.weather[0].main;
+
     toggleTemp.innerText = `Switch to ${
       setTemperature === "celcius" ? "Fahrenheit" : "Celcius"
     }`;
 
+    // information_text
     const information = document.getElementById("information_text");
 
     // Create a list
@@ -58,7 +64,7 @@ async function getData(location) {
 
     // Wind speed
     const windSpeed = document.createElement("li");
-    windSpeed.textContent = `Wind: ${Math.round(data.wind.speed * 3.6)} km/h`;
+    windSpeed.textContent = `Wind: ${Math.round(data.wind.speed * 2.23694)} mph`;
 
     // Sea and Ground level
     const seaLevel = document.createElement("li");
@@ -77,13 +83,27 @@ async function getData(location) {
 
 // Event Listener for Searching Weather Data
 searchWeather.addEventListener("click", () => {
-  toggleTemp.classList.remove("hidden");
+  welcomeGIF.classList.remove("hidden");
+  toggleTemp.classList.add("hidden");
 
-  const userInput = document.getElementById("inputLocationName").value;
-  inputString = userInput;
-  userInput ? getData(userInput) : console.log("Please enter a location");
+  const loadingText = document.getElementById("loading_text");
+  loadingText.textContent = "Loading..."
+  
+  // Clear previous content when loading
+  document.getElementById("weather_main_info").innerHTML = "";
+  document.getElementById("information_text").innerHTML = "";
+  document.getElementById("location_name").innerHTML = "";
+  document.getElementById("weather_status").innerHTML ="";
 
-  document.getElementById("inputLocationName").value = "";
+  setTimeout(() => {
+    const userInput = document.getElementById("inputLocationName").value;
+    inputString = userInput;
+    userInput ? getData(userInput) : console.log("Please enter a location");
+    document.getElementById("inputLocationName").value = "";
+    toggleTemp.classList.remove("hidden");
+    welcomeGIF.classList.add("hidden")
+  }, 2000);
+  
 });
 
 // Toggle button to switch temperature
