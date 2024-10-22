@@ -88,6 +88,10 @@ searchWeather.addEventListener("click", () => {
   // Disable the button to prevent multiple clicks
   searchWeather.disabled = true;
 
+  // set text
+  const loadingText = document.getElementById("loading_text");
+  loadingText.textContent = "Loading...";
+
   welcomeGIF.classList.remove("hidden");
   toggleTemp.classList.add("hidden");
 
@@ -98,14 +102,17 @@ searchWeather.addEventListener("click", () => {
   document.getElementById("weather_status").innerHTML = "";
 
   setTimeout(() => {
+
+    // Get user input
     const userInput = document.getElementById("inputLocationName").value;
     inputString = userInput;
+
+    // set text
+    loadingText.textContent = "Please enter location";
+
     if (userInput) {
       getData(userInput);
       
-      const loadingText = document.getElementById("loading_text");
-      loadingText.textContent = "Loading...";
-
       document.getElementById("inputLocationName").value = "";
       toggleTemp.classList.remove("hidden");
       welcomeGIF.classList.add("hidden");
