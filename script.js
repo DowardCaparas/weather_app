@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const searchWeather = document.getElementById("searchWeather");
 const toggleTemp = document.getElementById("toggle_temperature");
 const welcomeGIF = document.getElementById("welcome_gif");
