@@ -116,7 +116,6 @@ searchWeather.addEventListener("click", () => {
       document.getElementById("inputLocationName").value = "";
       toggleTemp.classList.remove("hidden");
       welcomeGIF.classList.add("hidden");
-    } else {
     }
 
     // Enable again the search button
